@@ -16,7 +16,7 @@ public class Componente {
         this.id = id;
         this.coordX = coordX;
         this.coordY = coordY;
-        this.estado = false;
+        this.estado = estado;
         this.legenda = legenda;
     }
 
