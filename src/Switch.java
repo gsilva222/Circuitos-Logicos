@@ -6,6 +6,11 @@ public class Switch extends Componente {
 
     @Override
     public void Desenhar() {
-        Main.drawPanel.drawComponent(logicircuit.LCComponent.SWITCH, super.getCoordX(), super.getCoordY(), super.getEstado(), super.getLegenda());
+        ProgCircuito.drawPanel.drawComponent(logicircuit.LCComponent.SWITCH, super.getCoordX(), super.getCoordY(), super.getEstado(), super.getLegenda());
+    }
+
+    @Override
+    public boolean getOutput() {
+        return super.getEstado();
     }
 }

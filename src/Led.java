@@ -6,6 +6,11 @@ public class Led extends Componente {
 
     @Override
     public void Desenhar() {
-        Main.drawPanel.drawComponent(logicircuit.LCComponent.LED, super.getCoordX(), super.getCoordY(), super.getEstado(), super.getLegenda());
+        ProgCircuito.drawPanel.drawComponent(logicircuit.LCComponent.LED, super.getCoordX(), super.getCoordY(), super.getEstado(), super.getLegenda());
+    }
+
+    @Override
+    public void setInput(boolean[] inputs) {
+        super.setEstado(inputs[0]);
     }
 }

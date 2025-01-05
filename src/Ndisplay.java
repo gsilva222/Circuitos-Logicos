@@ -6,7 +6,7 @@ public class Ndisplay extends Componente {
 
     @Override
     public void Desenhar() {
-        Main.drawPanel.drawComponent(logicircuit.LCComponent.BIT3_DISPLAY, super.getCoordX(), super.getCoordY(), super.getLegenda());
+        ProgCircuito.drawPanel.drawComponent(logicircuit.LCComponent.BIT3_DISPLAY, super.getCoordX(), super.getCoordY(), super.getLegenda());
     }
     
 }

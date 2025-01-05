@@ -1,4 +1,3 @@
-
 import logicircuit.*;
 import static logicircuit.LCComponent.*;
 import static logicircuit.LCInputPin.*;
@@ -8,7 +7,6 @@ public class Componente {
     private int coordX;
     private int coordY;
     private boolean estado;
-    private boolean estadofio;
     private String legenda;
     private logicircuit.LCComponent comp;
 
@@ -19,11 +17,19 @@ public class Componente {
         this.coordY = coordY;
         this.estado = estado;
         this.legenda = legenda;
-        this.estadofio = estado;
     }
 
     public void Desenhar(){
-        Main.drawPanel.drawComponent(comp, coordY, coordX, legenda);
+        ProgCircuito.drawPanel.drawComponent(comp, coordY, coordX, legenda);
+    }
+
+
+    public void setInput(boolean[] inputs) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public boolean getOutput() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public String getId() {
@@ -48,10 +54,6 @@ public class Componente {
 
     public logicircuit.LCComponent getComp() {
         return comp;
-    }
-
-    public void getEstadofio(boolean estado) {
-        this.estadofio = estado;
     }
 
     public void setId(String id) {

@@ -1,12 +1,29 @@
 public class Not extends Componente {
     
+    private boolean[] inputs;
+
     public Not (String id, int coordX, int coordY, boolean estado, String legenda) {
         super(logicircuit.LCComponent.AND, id, coordX, coordY, estado, legenda);
     }
 
     @Override
     public void Desenhar() {
-        Main.drawPanel.drawComponent(logicircuit.LCComponent.NOT, super.getCoordX(), super.getCoordY(), super.getLegenda());
+        ProgCircuito.drawPanel.drawComponent(logicircuit.LCComponent.NOT, super.getCoordX(), super.getCoordY(), super.getLegenda());
     }
     
+    @Override
+    public void setInput(boolean[] inputs) {
+        if (inputs.length != 1) {
+            throw new IllegalArgumentException("NOT gate must have 1 inputs");
+        }
+        this.inputs = inputs;
+    }
+
+    @Override
+    public boolean getOutput() {
+        if (inputs == null) {
+            throw new IllegalStateException("NOT gate inputs are not set");
+        }
+        return !(inputs[0]);
+    }
 }

@@ -1,4 +1,5 @@
 public class Nand extends Componente {
+    private boolean[] inputs;
 
     public Nand (String id, int coordX, int coordY, boolean estado, String legenda) {
         super(logicircuit.LCComponent.SWITCH, id, coordX, coordY, estado, legenda);
@@ -6,6 +7,22 @@ public class Nand extends Componente {
 
     @Override
     public void Desenhar() {
-        Main.drawPanel.drawComponent(logicircuit.LCComponent.NAND, super.getCoordX(), super.getCoordY(), super.getLegenda());
+        ProgCircuito.drawPanel.drawComponent(logicircuit.LCComponent.NAND, super.getCoordX(), super.getCoordY(), super.getLegenda());
+    }
+
+    @Override
+    public void setInput(boolean[] inputs) {
+        if (inputs.length != 2) {
+            throw new IllegalArgumentException("NAND gate must have 2 inputs");
+        }
+        this.inputs = inputs;
+    }
+
+    @Override
+    public boolean getOutput() {
+        if (inputs == null) {
+            throw new IllegalStateException("NAND gate inputs are not set");
+        }
+        return !(inputs[0] && inputs[1]);
     }
 }
