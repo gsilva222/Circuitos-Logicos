@@ -63,5 +63,9 @@ public class Componente {
     public void setLegenda(String legenda) {
         this.legenda = legenda;
     }
+
+    public logicircuit.LCComponent getComp() {
+        return comp;
+    }
 }
 

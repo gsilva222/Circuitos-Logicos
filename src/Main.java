@@ -25,6 +25,16 @@ public class Main
 
         drawPanel.clear();
 
+        And and2 = new And("AND", 80, 80, false, "AND2" );
+        and2.Desenhar();
+
+        And and3 = new And("AND", 120, 20, false, "AND3");
+        and3.Desenhar();
+
+        Conexao con1 = new Conexao(and2, and3, LCInputPin.PIN_A);
+        con1.draw();
+
+
         /*Switch sw1 = new Switch("LED1", 500, 500, true, "LED1");
         sw1.Desenhar();
         And and1 = new And("AND", 400, 400, true, "AND1");
