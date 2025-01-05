@@ -8,6 +8,7 @@ public class Componente {
     private int coordX;
     private int coordY;
     private boolean estado;
+    private boolean estadofio;
     private String legenda;
     private logicircuit.LCComponent comp;
 
@@ -18,6 +19,7 @@ public class Componente {
         this.coordY = coordY;
         this.estado = estado;
         this.legenda = legenda;
+        this.estadofio = estado;
     }
 
     public void Desenhar(){
@@ -44,6 +46,14 @@ public class Componente {
         return legenda;
     }
 
+    public logicircuit.LCComponent getComp() {
+        return comp;
+    }
+
+    public void getEstadofio(boolean estado) {
+        this.estadofio = estado;
+    }
+
     public void setId(String id) {
         this.id = id;
     }
@@ -63,9 +73,6 @@ public class Componente {
     public void setLegenda(String legenda) {
         this.legenda = legenda;
     }
-
-    public logicircuit.LCComponent getComp() {
-        return comp;
-    }
 }
+
 
