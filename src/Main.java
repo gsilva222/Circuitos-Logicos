@@ -17,7 +17,7 @@ public class Main
         new Main();
     }
 
-    private Main() 
+    private Main()
     {
         ProcessCommand processCommand = new ProcessCommand();
         LCDFrameCmd frame = new LCDFrameCmd(processCommand,"Demo de Logic Circuit", 900, 700);        
@@ -25,7 +25,7 @@ public class Main
 
         drawPanel.clear();
 
-        Switch sw1 = new Switch("LED1", 500, 500, true, "LED1");
+        /*Switch sw1 = new Switch("LED1", 500, 500, true, "LED1");
         sw1.Desenhar();
         And and1 = new And("AND", 400, 400, true, "AND1");
         and1.Desenhar();
@@ -40,7 +40,9 @@ public class Main
         Or or1 = new Or("OR", 400, 50, false, "OR1");
         or1.Desenhar();
         Xor xor1 = new Xor("XOR", 300, 50, true, "XOR1");
-        xor1.Desenhar();
+        xor1.Desenhar();*/
+
+
     }
 
 }
