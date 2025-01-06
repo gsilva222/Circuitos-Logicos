@@ -25,7 +25,7 @@ public class ProgCircuito
 
         drawPanel.clear();
 
-        Circuito circuito = new Circuito();
+        /*Circuito circuito = new Circuito();
 
         Switch sw1 = new Switch("SW1", 10, 50, false, "SW1");
         Switch sw2 = new Switch("SW2", 10, 150, true, "SW2");
@@ -65,7 +65,7 @@ public class ProgCircuito
         circuito.setEstadoComponente();
         circuito.setEstadoFio();
         circuito.setEstadoComponente();
-        circuito.Desenhar();
+        circuito.Desenhar(); */
     }
 
 }

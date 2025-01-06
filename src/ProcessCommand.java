@@ -71,38 +71,42 @@ public class ProcessCommand implements CmdProcessor {
             System.out.println("Legenda: " + (legend != null ? legend : "Sem legenda"));
 
             component = component.toUpperCase();
-            Componente newComponent = null;
 
             switch (component) {
                 case "SWITCH":
-                    newComponent = new Switch(id, x, y, false, legend);
-                    circuito.addComponente(newComponent);
+                    Switch sw = new Switch(id, x, y, false, legend);
+                    circuito.addComponente(sw);
                     circuito.Desenhar();
                     break;
     
                 case "AND":
-                    newComponent = new And(id, x, y, false, legend);
-                    circuito.addComponente(newComponent);
+                    And and = new And(id, x, y, false, legend);
+                    circuito.addComponente(and);
+                    circuito.Desenhar();
                     break;
     
                 case "OR":
-                    newComponent = new Or(id, x, y, false, legend);
-                    circuito.addComponente(newComponent);
+                    Or or = new Or(id, x, y, false, legend);
+                    circuito.addComponente(or);
+                    circuito.Desenhar();
                     break;
     
                 case "NOT":
-                    newComponent = new Not(id, x, y, false, legend);
-                    circuito.addComponente(newComponent);
+                     Not not = new Not(id, x, y, false, legend);
+                    circuito.addComponente(not);
+                    circuito.Desenhar();
                     break;
     
                 case "LED":
-                    newComponent = new Led(id, x, y, false, legend);
-                    circuito.addComponente(newComponent);
+                    Led led = new Led(id, x, y, false, legend);
+                    circuito.addComponente(led);
+                    circuito.Desenhar();
                     break;
     
                 case "3BD":
-                    newComponent = new Ndisplay(id, x, y, false, legend);
-                    circuito.addComponente(newComponent);
+                    Ndisplay ndisplay = new Ndisplay(id, x, y, false, legend);
+                    circuito.addComponente(ndisplay);
+                    circuito.Desenhar();
                     break;
     
                 default:
