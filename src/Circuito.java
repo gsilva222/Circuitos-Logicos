@@ -67,4 +67,11 @@ public class Circuito {
             }
         }
     }
+
+    public  void setAllStates(){
+        for(int i = 0; i < componentes.size()+1;i++){
+            setEstadoFio();
+            setEstadoComponente();
+        }
+    }
 }

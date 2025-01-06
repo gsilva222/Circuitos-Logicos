@@ -75,36 +75,42 @@ public class ProcessCommand implements CmdProcessor {
                 case "SWITCH":
                     Switch sw = new Switch(id, x, y, false, legend);
                     circuito.addComponente(sw);
+                    circuito.setAllStates();
                     circuito.Desenhar();
                     break;
     
                 case "AND":
                     And and = new And(id, x, y, false, legend);
                     circuito.addComponente(and);
+                    circuito.setAllStates();
                     circuito.Desenhar();
                     break;
     
                 case "OR":
                     Or or = new Or(id, x, y, false, legend);
                     circuito.addComponente(or);
+                    circuito.setAllStates();
                     circuito.Desenhar();
                     break;
     
                 case "NOT":
                      Not not = new Not(id, x, y, false, legend);
                     circuito.addComponente(not);
+                    circuito.setAllStates();
                     circuito.Desenhar();
                     break;
     
                 case "LED":
                     Led led = new Led(id, x, y, false, legend);
                     circuito.addComponente(led);
+                    circuito.setAllStates();
                     circuito.Desenhar();
                     break;
     
                 case "NDISPLAY":
                     Ndisplay ndisplay = new Ndisplay(id, x, y, false, legend);
                     circuito.addComponente(ndisplay);
+                    circuito.setAllStates();
                     circuito.Desenhar();
                     break;
     
@@ -142,6 +148,7 @@ public class ProcessCommand implements CmdProcessor {
             System.out.println("Pin: " + getPin(pin));
 
             circuito.addConexao(from, to, getPin(pin));
+            circuito.setAllStates();
             circuito.Desenhar();
 
             return "Comando WIRE processado com sucesso.";
@@ -189,8 +196,8 @@ public class ProcessCommand implements CmdProcessor {
                     for (Componente componente : circuito.componentes) {
                         if (componente.getId().equals(id)) {
                             componente.setEstado(true);
-                            circuito.setEstadoComponente();
-                            circuito.setEstadoFio();
+                            circuito.setAllStates();
+                            circuito.Desenhar();
                         }
                     }
                     break;
@@ -198,6 +205,8 @@ public class ProcessCommand implements CmdProcessor {
                     for (Componente componente : circuito.componentes) {
                         if (componente.getId().equals(id)) {
                             componente.setEstado(false);
+                            circuito.setAllStates();
+                            circuito.Desenhar();
                         }
                     }
                     break;
