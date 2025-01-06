@@ -1,8 +1,8 @@
 import java.util.ArrayList;
-
+import java.io.Serializable;
 import logicircuit.LCInputPin;
 
-public class Circuito {
+public class Circuito implements Serializable {
     
     ArrayList<Componente> componentes = new ArrayList<Componente>();
     ArrayList<Conexao> conexoes = new ArrayList<Conexao>();
@@ -22,6 +22,13 @@ public class Circuito {
     }
 
     public void addConexao(String from, String to, LCInputPin pin) {
+        for (Conexao conexao : conexoes) {
+            if (conexao.getTarget().getId().equals(to) && conexao.getPin().equals(pin)) {
+                System.out.println("Erro: O pin " + pin + " do componente " + to + " já está ocupado.");
+                return;
+            }
+        }  
+
         for (Componente componente : componentes) {
             if (componente.getId().equals(from)) {
                 for (Componente componente2 : componentes) {
@@ -62,7 +69,7 @@ public class Circuito {
             }
             try{
                 componente.setInput(inputsArray);
-            } catch (UnsupportedOperationException e) {
+            } catch (Exception e) {
                 // do nothing
             }
         }

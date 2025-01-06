@@ -2,7 +2,7 @@ import logicircuit.*;
 
 public class ProgCircuito
 {
-    public static LCDPanel drawPanel;
+    public static transient LCDPanel drawPanel;
     static boolean sd = false, se = false, sf = false;
 
     public static void main(String[] args) 
@@ -18,5 +18,4 @@ public class ProgCircuito
 
         drawPanel.clear();
     }
-
 }

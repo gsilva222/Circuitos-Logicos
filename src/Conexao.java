@@ -1,13 +1,11 @@
 import logicircuit.*;
+import java.io.Serializable;
 
-
-
-public class Conexao {
+public class Conexao implements Serializable {
     private Componente source;
     private Componente target;
     private LCInputPin pin;
     private boolean estadofio;
-
 
     public Conexao (Componente source, Componente target, LCInputPin pin) {
         this.source = source;
@@ -35,5 +33,9 @@ public class Conexao {
 
     public Componente getTarget() {
         return target;
+    }
+
+    public LCInputPin getPin() {
+        return pin;
     }
 }

@@ -1,4 +1,5 @@
-public class And extends Componente {
+
+public class And extends Componente  {
 
     private boolean[] inputs;
 

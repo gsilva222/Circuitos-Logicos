@@ -1,6 +1,7 @@
 import logicircuit.*;
+import java.io.Serializable;
 
-public class Componente {
+public class Componente implements Serializable {
     private String id;
     private int coordX;
     private int coordY;
