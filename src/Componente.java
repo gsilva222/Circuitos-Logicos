@@ -1,4 +1,3 @@
-import logicircuit.*;
 import java.io.Serializable;
 
 public class Componente implements Serializable {
