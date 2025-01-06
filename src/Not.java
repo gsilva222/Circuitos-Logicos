@@ -14,7 +14,7 @@ public class Not extends Componente {
     @Override
     public void setInput(boolean[] inputs) {
         if (inputs.length != 1) {
-            throw new IllegalArgumentException("NOT gate must have 1 inputs");
+            throw new IllegalArgumentException("NOT tem de ter 1 inputs");
         }
         this.inputs = inputs;
     }
@@ -22,7 +22,7 @@ public class Not extends Componente {
     @Override
     public boolean getOutput() {
         if (inputs == null) {
-            throw new IllegalStateException("NOT gate inputs are not set");
+            throw new IllegalStateException("NOT nao tem inputs");
         }
         return !(inputs[0]);
     }

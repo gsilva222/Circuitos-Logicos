@@ -13,7 +13,7 @@ public class Or extends Componente {
     @Override
     public void setInput(boolean[] inputs) {
         if (inputs.length != 2) {
-            throw new IllegalArgumentException("OR gate must have 2 inputs");
+            throw new IllegalArgumentException("OR tem de ter 2 inputs");
         }
         this.inputs = inputs;
     }
@@ -21,7 +21,7 @@ public class Or extends Componente {
     @Override
     public boolean getOutput() {
         if (inputs == null) {
-            throw new IllegalStateException("OR gate inputs are not set");
+            throw new IllegalStateException("OR nao tem inputs");
         }
         return inputs[0] || inputs[1];
     }

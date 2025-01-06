@@ -1,6 +1,4 @@
 import logicircuit.*;
-import static logicircuit.LCComponent.*;
-import static logicircuit.LCInputPin.*;
 
 public class Componente {
     private String id;
@@ -25,11 +23,11 @@ public class Componente {
 
 
     public void setInput(boolean[] inputs) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Não é suportado.");
     }
 
     public boolean getOutput() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Não é suportado.");
     }
 
     public String getId() {

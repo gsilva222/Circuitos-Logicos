@@ -13,7 +13,7 @@ public class Nor extends Componente {
     @Override
     public void setInput(boolean[] inputs) {
         if (inputs.length != 2) {
-            throw new IllegalArgumentException("NOR gate must have 2 inputs");
+            throw new IllegalArgumentException("NOR tem de ter 2 inputs");
         }
         this.inputs = inputs;
     }
@@ -21,7 +21,7 @@ public class Nor extends Componente {
     @Override
     public boolean getOutput() {
         if (inputs == null) {
-            throw new IllegalStateException("NOR gate inputs are not set");
+            throw new IllegalStateException("NOR nao tem inputs");
         }
         return !(inputs[0] || inputs[1]);
     }

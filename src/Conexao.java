@@ -1,5 +1,5 @@
-import logicircuit.LCComponent;
-import logicircuit.LCInputPin;
+import logicircuit.*;
+
 
 
 public class Conexao {

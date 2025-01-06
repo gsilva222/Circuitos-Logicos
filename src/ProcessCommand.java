@@ -1,10 +1,12 @@
-import logicircuit.CmdProcessor;
-import static logicircuit.LCComponent.SWITCH;
+import logicircuit.*;
+
 import java.util.regex.*;
 
 
 
 public class ProcessCommand implements CmdProcessor {
+
+    public Circuito circuito = new Circuito();
 
     @Override
     public String process(String cmd) {
@@ -24,13 +26,11 @@ public class ProcessCommand implements CmdProcessor {
 
             // WIRE <id_elemento1> <id_elemento2> <input_pin_elemento2>
             case "WIRE":
-                System.out.println("Comando WIRE recebido com argumentos: " + args);
-                return "Comando WIRE processado.";
+                return processWireCommand(args);
 
             // TURN <state> <id_elemento_entrada>
             case "TURN":
-                System.out.println("Comando TURN recebido com argumentos: " + args);
-                return "Comando TURN processado.";
+                return processTurnCommand(args);
 
             case "SAVE":
                 System.out.println("Comando SAVE recebido com argumentos: " + args);
@@ -55,7 +55,6 @@ public class ProcessCommand implements CmdProcessor {
         String regex = "(\\w+):(\\w+)@(\\d+),(\\d+) ?(?:\\[(.*)\\])?";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(args);
-        Circuito circuito = new Circuito();
 
         if (matcher.matches()) {
             String id = matcher.group(1);
@@ -103,7 +102,7 @@ public class ProcessCommand implements CmdProcessor {
                     circuito.Desenhar();
                     break;
     
-                case "3BD":
+                case "NDISPLAY":
                     Ndisplay ndisplay = new Ndisplay(id, x, y, false, legend);
                     circuito.addComponente(ndisplay);
                     circuito.Desenhar();
@@ -117,6 +116,100 @@ public class ProcessCommand implements CmdProcessor {
             return "Comando ADD processado com sucesso.";
         } else {
             return "Erro: formato do comando ADD inválido.";
+        }
+    }
+
+
+    /**
+     * Processa o comando WIRE.
+     *
+     * @param args Argumentos do comando WIRE no formato: <id_elemento1> <id_elemento2> <input_pin_elemento2>
+     * @return Mensagem indicando o sucesso ou erro do processamento
+     */
+    private String processWireCommand(String args){
+        String regex = "(\\w+) (\\w+) (\\w+)";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(args);
+
+        if (matcher.matches()) {
+            String from = matcher.group(1);
+            String to = matcher.group(2);
+            String pin = matcher.group(3);
+            pin = pin.toUpperCase();
+
+            System.out.println("ID Elemento 1: " + from);
+            System.out.println("ID Elemento 2: " + to);
+            System.out.println("Pin: " + getPin(pin));
+
+            circuito.addConexao(from, to, getPin(pin));
+            circuito.Desenhar();
+
+            return "Comando WIRE processado com sucesso.";
+        } else {
+            return "Erro: formato do comando WIRE inválido.";
+        }
+    }
+    private LCInputPin getPin(String pin){
+        switch (pin) {
+            case "PIN_A":
+                return LCInputPin.PIN_A;
+            case "PIN_B":
+                return LCInputPin.PIN_B;
+            case "PIN_C":
+                return LCInputPin.PIN_C;
+            default:
+                return LCInputPin.PIN_A;
+        }
+    }
+
+
+    /**
+     * Processa o comando TURN.
+     *
+     * @param args Argumentos do comando TURN no formato: <state> <id_elemento_entrada>
+     * @return Mensagem indicando o sucesso ou erro do processamento
+     */
+    private String processTurnCommand(String args)
+    {
+        String regex = "(\\w+) (\\w+)";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(args);
+
+        if (matcher.matches()) {
+            String state = matcher.group(1);
+            String id = matcher.group(2);
+
+            System.out.println("State: " + state);
+            System.out.println("ID Elemento: " + id);
+
+            state = state.toUpperCase();
+
+            switch (state) {
+                case "ON":
+                    for (Componente componente : circuito.componentes) {
+                        if (componente.getId().equals(id)) {
+                            componente.setEstado(true);
+                            circuito.setEstadoComponente();
+                            circuito.setEstadoFio();
+                        }
+                    }
+                    break;
+                case "OFF":
+                    for (Componente componente : circuito.componentes) {
+                        if (componente.getId().equals(id)) {
+                            componente.setEstado(false);
+                        }
+                    }
+                    break;
+                default:
+                    return "Erro: estado desconhecido.";
+            }
+
+            circuito.Desenhar();
+
+            return "Comando TURN processado com sucesso.";
+        } else {
+            return "Erro: formato do comando TURN inválido.";
         }
     }
 }

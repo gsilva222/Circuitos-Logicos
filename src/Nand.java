@@ -13,7 +13,7 @@ public class Nand extends Componente {
     @Override
     public void setInput(boolean[] inputs) {
         if (inputs.length != 2) {
-            throw new IllegalArgumentException("NAND gate must have 2 inputs");
+            throw new IllegalArgumentException("NAND tem de ter 2 inputs");
         }
         this.inputs = inputs;
     }
@@ -21,7 +21,7 @@ public class Nand extends Componente {
     @Override
     public boolean getOutput() {
         if (inputs == null) {
-            throw new IllegalStateException("NAND gate inputs are not set");
+            throw new IllegalStateException("NAND nao tem inputs");
         }
         return !(inputs[0] && inputs[1]);
     }

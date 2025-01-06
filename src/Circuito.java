@@ -12,6 +12,7 @@ public class Circuito {
     }
 
     public void Desenhar() {
+        ProgCircuito.drawPanel.clear();
         for (Componente componente : componentes) {
             componente.Desenhar();
         }
