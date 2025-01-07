@@ -46,13 +46,13 @@ public class ProcessCommand implements CmdProcessor {
                 }
                 openCircuit(args.trim());
                 return "Circuito carregado.";
-
             case "CLEAR":
-                ProgCircuito.drawPanel.clear();
-                return "Circuito limpo.";
+                circuito.clear();
+                return "Circuito limpo com sucesso.";
 
             default:
                 return "Erro: comando desconhecido.";
+
         }
     }
 

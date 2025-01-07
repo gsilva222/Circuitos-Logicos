@@ -110,4 +110,22 @@ public class Circuito implements Serializable {
             setEstadoComponente();
         }
     }
+    /**
+     * Limpa todos os componentes e conexões do circuito e atualiza a interface.
+     */
+    public void clear() {
+        clearComponentes();
+        clearConexoes();
+        Desenhar(); // Atualiza a interface gráfica
+        System.out.println("Circuito limpo.");
+    }
+
+    public void clearComponentes() {
+        componentes.clear();
+    }
+
+    public void clearConexoes() {
+        conexoes.clear();
+    }
+
 }
