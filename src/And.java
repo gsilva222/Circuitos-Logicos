@@ -1,6 +1,6 @@
 
 public class And extends Componente  {
-/*koseskoidjkiedjnwkjehldfqjkfnqknnflqjkhefkjernfqlejkrg*/
+
     private boolean[] inputs;
 
     public And (String id, int coordX, int coordY, boolean estado, String legenda) {
