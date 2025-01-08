@@ -8,7 +8,6 @@ import java.io.ObjectOutputStream;
 import java.util.regex.*;
 
 
-
 public class ProcessCommand implements CmdProcessor {
 
     public Circuito circuito = new Circuito();
@@ -59,8 +58,7 @@ public class ProcessCommand implements CmdProcessor {
     /**
      * Processa o comando ADD.
      *
-     * @param args Argumentos do comando ADD no formato: <id>:<tipo_porta>@<coord_X>,<coord_Y> [<legenda>]
-     * @return Mensagem indicando o sucesso ou erro do processamento
+     * @param args Argumentos do comando ADD no formato: <id>:<tipo_porta>@<coord_X>,<coord_Y> <legenda>
      */
     private String processAddCommand(String args) {
         String regex = "(\\w+):(\\w+)@(\\d+),(\\d+)(?: (.*))?";
@@ -74,13 +72,7 @@ public class ProcessCommand implements CmdProcessor {
             int y = Integer.parseInt(matcher.group(4));
             // Usar o id como legenda
             String legend = matcher.group(5) != null ? matcher.group(5).trim() : id;
-    
-            System.out.println("ID: " + id);
-            System.out.println("Componente: " + component);
-            System.out.println("Coordenada X: " + x);
-            System.out.println("Coordenada Y: " + y);
-            System.out.println("Legenda: " + legend);
-    
+
             component = component.toUpperCase();
 
             switch (component) {
@@ -142,7 +134,6 @@ public class ProcessCommand implements CmdProcessor {
      * Processa o comando WIRE.
      *
      * @param args Argumentos do comando WIRE no formato: <id_elemento1> <id_elemento2> [<input_pin_elemento2>]
-     * @return Mensagem indicando o sucesso ou erro do processamento
      */
     private String processWireCommand(String args){
         String regex = "(\\w+) (\\w+)(?: (\\w+))?";
@@ -153,10 +144,6 @@ public class ProcessCommand implements CmdProcessor {
             String from = matcher.group(1);
             String to = matcher.group(2);
             String pin = matcher.group(3) != null ? matcher.group(3).toUpperCase() : "PIN_A";
-
-            System.out.println("ID Elemento 1: " + from);
-            System.out.println("ID Elemento 2: " + to);
-            System.out.println("Pin: " + getPin(pin));
 
             for (Conexao conexao : circuito.conexoes) {
                 if (conexao.getTarget().getId().equals(to) && conexao.getPin().equals(getPin(pin))) {
@@ -190,7 +177,6 @@ public class ProcessCommand implements CmdProcessor {
      * Processa o comando TURN.
      *
      * @param args Argumentos do comando TURN no formato: <state> <id_elemento_entrada>
-     * @return Mensagem indicando o sucesso ou erro do processamento
      */
     private String processTurnCommand(String args)
     {
@@ -201,9 +187,6 @@ public class ProcessCommand implements CmdProcessor {
         if (matcher.matches()) {
             String state = matcher.group(1);
             String id = matcher.group(2);
-
-            System.out.println("State: " + state);
-            System.out.println("ID Elemento: " + id);
 
             state = state.toUpperCase();
 
@@ -229,8 +212,6 @@ public class ProcessCommand implements CmdProcessor {
                 default:
                     return "Erro: estado desconhecido.";
             }
-
-            circuito.Desenhar();
 
             return "Comando TURN processado com sucesso.";
         } else {

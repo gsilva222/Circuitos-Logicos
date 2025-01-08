@@ -63,6 +63,7 @@ public class Circuito implements Serializable {
                         inputs.add(conexao.getEstadofio());
                 }
             }
+            // Converte o ArrayList para um array de boolean
             boolean[] inputsArray = new boolean[inputs.size()];
             for (int i = 0; i < inputs.size(); i++) {
                 inputsArray[i] = inputs.get(i);
