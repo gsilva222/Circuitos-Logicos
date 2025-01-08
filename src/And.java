@@ -28,4 +28,11 @@ public class And extends Componente  {
         return inputs[0] && inputs[1];
     }
 
+    @Override
+    public void checkFull() {
+        if (inputs != null && inputs.length >= 2) {
+            throw new IllegalArgumentException("Todos os pinos de entrada do componente já estão ocupados.");
+        }
+    }
+
 }

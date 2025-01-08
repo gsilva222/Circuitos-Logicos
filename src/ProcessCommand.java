@@ -154,12 +154,11 @@ public class ProcessCommand implements CmdProcessor {
             for (Conexao conexao : circuito.conexoes) {
                 if (conexao.getTarget().getId().equals(to) && conexao.getPin().equals(getPin(pin))) {
                     return("Erro: O pin " + pin + " do componente " + to + " já está ocupado.");
-                }
-                else {
+                } else {
                     try {
                         conexao.getTarget().checkFull();
                     } catch (Exception e) {
-                        return("Erro: O componente " + to + " já tem todos os pinos ocupados.");
+                        // faz nada
                     }
                 }
             }

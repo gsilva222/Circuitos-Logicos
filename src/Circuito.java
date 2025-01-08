@@ -56,25 +56,28 @@ public class Circuito implements Serializable {
     }
 
     public void setEstadoComponente() {
-        for (Componente componente : componentes){
-            ArrayList<Boolean> inputs = new ArrayList<Boolean>();
-            for(Conexao conexao : conexoes) {
+        for (Componente componente : componentes) {
+            ArrayList<Boolean> inputs = new ArrayList<>();
+            for (Conexao conexao : conexoes) {
                 if (componente.getId().equals(conexao.getTarget().getId())) {
-                        inputs.add(conexao.getEstadofio());
+                    inputs.add(conexao.getEstadofio());
                 }
             }
+    
             // Converte o ArrayList para um array de boolean
             boolean[] inputsArray = new boolean[inputs.size()];
             for (int i = 0; i < inputs.size(); i++) {
                 inputsArray[i] = inputs.get(i);
             }
-            try{
+    
+            try {
                 componente.setInput(inputsArray);
             } catch (Exception e) {
                 // faz nada
             }
         }
     }
+    
 
     public  void setAllStates(){
         for(int i = 0; i < componentes.size()+1;i++){
