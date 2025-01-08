@@ -73,6 +73,10 @@ public class Componente implements Serializable {
     public void setLegenda(String legenda) {
         this.legenda = legenda;
     }
+
+    public void checkFull(){
+        throw new UnsupportedOperationException("Não é suportado.");
+    }
 }
 
 

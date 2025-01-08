@@ -75,6 +75,12 @@ public class ProcessCommand implements CmdProcessor {
 
             component = component.toUpperCase();
 
+            for(Componente componente : circuito.componentes){
+                if(componente.getId().equals(id)){
+                    return "Erro: id já existente.";
+                }
+            }
+
             switch (component) {
                 case "SWITCH":
                     Switch sw = new Switch(id, x, y, false, legend);
@@ -148,6 +154,13 @@ public class ProcessCommand implements CmdProcessor {
             for (Conexao conexao : circuito.conexoes) {
                 if (conexao.getTarget().getId().equals(to) && conexao.getPin().equals(getPin(pin))) {
                     return("Erro: O pin " + pin + " do componente " + to + " já está ocupado.");
+                }
+                else {
+                    try {
+                        conexao.getTarget().checkFull();
+                    } catch (Exception e) {
+                        return("Erro: O componente " + to + " já tem todos os pinos ocupados.");
+                    }
                 }
             }
 
