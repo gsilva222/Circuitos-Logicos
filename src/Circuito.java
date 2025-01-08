@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.io.Serializable;
 import logicircuit.LCInputPin;
-import logicircuit.LCComponent;
 
 public class Circuito implements Serializable {
     
@@ -30,34 +29,6 @@ public class Circuito implements Serializable {
             }
         }
 
-        /*for (Componente componente : componentes) {
-            if (componente.getId().equals(to)) {
-                // Valida se o pin está dentro do limite do componente
-                switch (componente.getComp().numberInputPins) {
-                    case ONE:
-                        if (!pin.equals(LCInputPin.PIN_A)) {
-                            System.out.println("Erro: Componente " + to + " só suporta PIN_A.");
-                            return;
-                        }
-                        break;
-                    case TWO:
-                        if (!pin.equals(LCInputPin.PIN_A) && !pin.equals(LCInputPin.PIN_B)) {
-                            System.out.println("Erro: Componente " + to + " só suporta PIN_A e PIN_B.");
-                            return;
-                        }
-                        break;
-                    case THREE:
-                        // PIN_C é permitido neste caso
-                        break;
-                    default:
-                        System.out.println("Erro: Número de pinos inválido para o componente " + to + ".");
-                        return;
-                }
-            }
-        }*/
-
-
-
         for (Componente componente : componentes) {
             if (componente.getId().equals(from)) {
                 for (Componente componente2 : componentes) {
@@ -77,7 +48,7 @@ public class Circuito implements Serializable {
                 try {
                    conexao.setEstadofio(componente.getOutput());
                 } catch (Exception e) {
-                    // TODO: handle exception
+                    // faz nada
                 }
                }
            }
@@ -99,7 +70,7 @@ public class Circuito implements Serializable {
             try{
                 componente.setInput(inputsArray);
             } catch (Exception e) {
-                // do nothing
+                // faz nada
             }
         }
     }
